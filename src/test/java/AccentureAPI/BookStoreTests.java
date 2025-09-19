@@ -1,7 +1,7 @@
-package tests;
+package AccentureAPI;
 
 import org.junit.Test;
-import util.TestRule;
+import AccentureAPI.TestRule;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -15,7 +15,7 @@ public class BookStoreTests {
     @Test
     public void CreateUser(){
         String userUrl = "https://demoqa.com/Account/v1/User";
-        String userBody = "{\"userName\": \"Accenture\", \"password\": \"Senha123!\"}";
+        String userBody = "{\"userName\": \"Alana\", \"password\": \"Senha123!\"}";
         Map<String, String> postHeaders = new HashMap<>();
         postHeaders.put("Content-Type", "application/json");
 
@@ -24,6 +24,7 @@ public class BookStoreTests {
         HttpResponse<String> userResponse = TestRule.sendPostRequest(userUrl, userBody, postHeaders);
         if (userResponse != null) {
             System.out.println("Status: " + userResponse.statusCode());
+            System.out.println("Response Body: " + userResponse.body());
         }
         System.out.println("\n");
     }
@@ -32,7 +33,7 @@ public class BookStoreTests {
     public void AcessToken(){
         String url = "https://demoqa.com/Account/v1/GenerateToken";
 
-        String username = "Accenture";
+        String username = "Alana";
         String password = "Senha123!";
 
         String jsonBody = String.format("{\"userName\": \"%s\", \"password\": \"%s\"}", username, password);
@@ -64,9 +65,9 @@ public class BookStoreTests {
 
     @Test
     public void UserAutorization(){
-        String username = "Accenture";
+        String username = "Alana";
         String password = "Senha123!";
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFjY2VudHVyZSIsInBhc3N3b3JkIjoiU2VuaGExMjMhIiwiaWF0IjoxNzU4MjU0MTU1fQ.4wgXZ6BhcyngUXP6j3FA5IdMv4bnVYk4bwxMT0cJ__s";
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFsYW5hIiwicGFzc3dvcmQiOiJTZW5oYTEyMyEiLCJpYXQiOjE3NTgzMDkzMDF9.gb-f7WNqzC5oWYl5YYzLWW51Ts7b-R66k99K7WDfulU";
 
         String url = "https://demoqa.com/Account/v1/Authorized";
 
@@ -131,8 +132,8 @@ public class BookStoreTests {
 
     @Test
     public void AddBooks(){
-        String userId = "Accenture";
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFjY2VudHVyZSIsInBhc3N3b3JkIjoiU2VuaGExMjMhIiwiaWF0IjoxNzU4MjU0MTU1fQ.4wgXZ6BhcyngUXP6j3FA5IdMv4bnVYk4bwxMT0cJ__s";
+        String userId = "5cb53124-cf82-48e6-ba4d-2a95e8950049";
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFsYW5hIiwicGFzc3dvcmQiOiJTZW5oYTEyMyEiLCJpYXQiOjE3NTgzMDkzMDF9.gb-f7WNqzC5oWYl5YYzLWW51Ts7b-R66k99K7WDfulU";
 
         String url = "https://demoqa.com/BookStore/v1/Books";
 
@@ -172,8 +173,8 @@ public class BookStoreTests {
 
     @Test
     public void UserDetails(){
-        String userId = "Accenture";
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFjY2VudHVyZSIsInBhc3N3b3JkIjoiU2VuaGExMjMhIiwiaWF0IjoxNzU4MjU0MTU1fQ.4wgXZ6BhcyngUXP6j3FA5IdMv4bnVYk4bwxMT0cJ__s";
+        String userId = "5cb53124-cf82-48e6-ba4d-2a95e8950049";
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFsYW5hIiwicGFzc3dvcmQiOiJTZW5oYTEyMyEiLCJpYXQiOjE3NTgzMDkzMDF9.gb-f7WNqzC5oWYl5YYzLWW51Ts7b-R66k99K7WDfulU";
 
         String url = String.format("https://demoqa.com/Account/v1/User/%s", userId);
 

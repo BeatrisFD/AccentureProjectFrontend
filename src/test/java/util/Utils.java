@@ -1,5 +1,12 @@
 package util;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+
 public class Utils {
 
     protected static void setDriverByOS(){
@@ -11,5 +18,8 @@ public class Utils {
         }
         System.setProperty("webdriver.chrome.driver", driverPath);
     }
+
+
+
 
 }
